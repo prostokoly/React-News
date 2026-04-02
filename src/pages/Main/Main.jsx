@@ -13,19 +13,46 @@ const Main = () => {
     const totalPage = 10;
     const pageSize = 10;
 
-    const fetchNews = async (currentPage) => {
-        try {
-            setIsLoading(true);
-            const response = await getNews(currentPage, pageSize);
-            setNews(response.news);
-            setIsLoading(false);
-        } catch (error) {
-            console.log(error);
-        }
-    };
     useEffect(() => {
-        fetchNews(currentPage);
+        let isMounted = true;
+
+        const fetchNews = async () => {
+            try {
+                setIsLoading(true);
+                const response = await getNews(currentPage, pageSize);
+
+                if (isMounted) {
+                    setNews(response.news);
+                    setIsLoading(false);
+                }
+            } catch (error) {
+                if (isMounted) {
+                    console.error(error);
+                    setIsLoading(false);
+                }
+            }
+        };
+
+        fetchNews();
+
+        return () => {
+            isMounted = false;
+        };
     }, [currentPage]);
+
+    // const fetchNews = async (currentPage) => {
+    //     try {
+    //         setIsLoading(true);
+    //         const response = await getNews(currentPage, pageSize);
+    //         setNews(response.news);
+    //         setIsLoading(false);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
+    // useEffect(() => {
+    //     fetchNews(currentPage);
+    // }, [currentPage]);
 
     const handleNextPage = () => {
         if (currentPage < totalPage) {
