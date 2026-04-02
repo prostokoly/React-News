@@ -1,0 +1,46 @@
+import React from "react";
+
+import styles from "./pagination.module.css";
+
+const Pagination = ({
+    totalPage,
+    nextPage,
+    previousPage,
+    currentPage,
+    handlePageClick,
+}) => {
+    return (
+        <div className={styles.pagination}>
+            <button
+                disabled={currentPage <= 1}
+                className={styles.arrow}
+                onClick={() => previousPage()}
+            >
+                {"<"}
+            </button>
+            <div className={styles.list}>
+                {[...Array(totalPage)].map((_, index) => {
+                    return (
+                        <button
+                            onClick={() => handlePageClick(index + 1)}
+                            className={styles.pagesNumber}
+                            disabled={index + 1 === currentPage}
+                            key={index}
+                        >
+                            {index + 1}
+                        </button>
+                    );
+                })}
+            </div>
+            <button
+                className={styles.arrow}
+                disabled={currentPage >= totalPage}
+                onClick={() => nextPage()}
+            >
+                {">"}
+            </button>
+        </div>
+    );
+};
+
+export default Pagination;
