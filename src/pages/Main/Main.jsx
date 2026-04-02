@@ -1,58 +1,57 @@
 import { useEffect, useState } from "react";
 import NewsBanner from "../../component/NewsBanner/NewsBanner";
 import styles from "./main.module.css";
-import { getNews } from "../../api/apiNews";
+import { getCategories, getNews } from "../../api/apiNews";
 import NewsList from "../../component/NewsList/NewsList";
 import Skeleton from "../../component/Skeleton/Skeleton";
 import Pagination from "../../component/Paginaton/Pagination";
+import Categories from "../../component/Categories.jsx/Categories";
 
 const Main = () => {
     const [news, setNews] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
+    const [categories, setCategories] = useState([]);
+    const [selectedCategories, setSelectedCategories] = useState("All");
+
     const totalPage = 10;
     const pageSize = 10;
 
-    useEffect(() => {
-        let isMounted = true;
+    const fetchNews = async (currentPage) => {
+        try {
+            setIsLoading(true);
+            const response = await getNews({
+                page_number: currentPage,
+                page_size: pageSize,
+                category:
+                    selectedCategories === "All" ? null : selectedCategories,
+            });
 
-        const fetchNews = async () => {
-            try {
-                setIsLoading(true);
-                const response = await getNews(currentPage, pageSize);
-
-                if (isMounted) {
-                    setNews(response.news);
-                    setIsLoading(false);
-                }
-            } catch (error) {
-                if (isMounted) {
-                    console.error(error);
-                    setIsLoading(false);
-                }
+            setNews(response.news);
+            setIsLoading(false);
+        } catch (error) {
+            {
+                console.error(error);
             }
-        };
+        }
+    };
 
-        fetchNews();
+    const fetchCategories = async () => {
+        try {
+            const response = await getCategories();
+            setCategories(["All", ...response.categories]);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-        return () => {
-            isMounted = false;
-        };
-    }, [currentPage]);
+    useEffect(() => {
+        fetchCategories();
+    }, []);
 
-    // const fetchNews = async (currentPage) => {
-    //     try {
-    //         setIsLoading(true);
-    //         const response = await getNews(currentPage, pageSize);
-    //         setNews(response.news);
-    //         setIsLoading(false);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
-    // useEffect(() => {
-    //     fetchNews(currentPage);
-    // }, [currentPage]);
+    useEffect(() => {
+        fetchNews(currentPage);
+    }, [currentPage, selectedCategories]);
 
     const handleNextPage = () => {
         if (currentPage < totalPage) {
@@ -70,6 +69,12 @@ const Main = () => {
     };
     return (
         <main className={styles.main}>
+            <Categories
+                categories={categories}
+                setSelectedCategory={setSelectedCategories}
+                selectedCategory={selectedCategories}
+            />
+
             {news.length > 0 && !isLoading ? (
                 <NewsBanner item={news[3]} />
             ) : (
