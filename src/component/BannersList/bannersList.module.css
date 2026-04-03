@@ -5,3 +5,10 @@
     box-sizing: border-box;
     gap: 12px;
 }
+
+@media (min-width: 768px) {
+    .banners {
+        max-height: 1200px;
+        overflow-y: auto;
+    }
+}
