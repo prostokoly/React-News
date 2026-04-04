@@ -1,8 +1,10 @@
 import styles from "./image.module.css";
 
-import React from "react";
+interface IProps {
+    image: string;
+}
 
-const Image = ({ image }) => {
+const Image = ({ image }: IProps) => {
     return (
         <div className={styles.wrapper}>
             {image ? (

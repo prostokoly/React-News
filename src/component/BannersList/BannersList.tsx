@@ -1,8 +1,13 @@
 import styles from "./bannersList.module.css";
 import withSkeleton from "../../helpers/hocs/withSkeleton";
 import NewsBanner from "../NewsBanner/NewsBanner";
+import type { INews } from "../../interfaces";
 
-const BannersList = ({ banners }) => {
+interface IProps {
+    banners?: INews[];
+}
+
+const BannersList = ({ banners }: IProps) => {
     return (
         <ul className={styles.banners}>
             {banners?.map((banner) => {

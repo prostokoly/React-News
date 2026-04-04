@@ -3,6 +3,7 @@ import { PAGE_SIZE, TOTAL_PAGE } from "../../constant/constant";
 import { useDebaunce } from "../../helpers/hooks/useDebaunce";
 import { useFetch } from "../../helpers/hooks/useFetch";
 import { useFilters } from "../../helpers/hooks/useFilters";
+import type { INewsApiResponse, ParamsType } from "../../interfaces";
 import NewsFilters from "../NewsFilters/NewsFilters";
 import NewsList from "../NewsList/NewsList";
 import PaginationWrapper from "../PaginationWrapper/PaginationWrapper";
@@ -18,10 +19,13 @@ const NewsByFilters = () => {
 
     const debounceKeywords = useDebaunce(filters.keywords, 1500);
 
-    const { data, isLoading } = useFetch(getNews, {
-        ...filters,
-        keywords: debounceKeywords,
-    });
+    const { data, isLoading } = useFetch<INewsApiResponse, ParamsType>(
+        getNews,
+        {
+            ...filters,
+            keywords: debounceKeywords,
+        },
+    );
 
     const handleNextPage = () => {
         if (filters.page_number < TOTAL_PAGE) {
@@ -34,7 +38,7 @@ const NewsByFilters = () => {
         }
     };
 
-    const handlePageClick = (pageNumber) => {
+    const handlePageClick = (pageNumber: number) => {
         changeFilter("page_number", pageNumber);
     };
 
