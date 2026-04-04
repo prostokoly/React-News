@@ -1,6 +1,7 @@
 import React from "react";
 
 import styles from "./pagination.module.css";
+import type { IPaginationProps } from "../../interfaces";
 
 const Pagination = ({
     totalPage,
@@ -8,7 +9,7 @@ const Pagination = ({
     previousPage,
     currentPage,
     handlePageClick,
-}) => {
+}: IPaginationProps) => {
     return (
         <div className={styles.pagination}>
             <button

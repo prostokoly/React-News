@@ -1,15 +1,22 @@
 import React, { useRef } from "react";
 import styles from "./slider.module.css";
 
-const Slider = ({ children }) => {
-    const sliderRef = useRef(null);
+interface Props {
+    children: React.ReactElement;
+}
+
+const Slider = ({ children }: Props) => {
+    const sliderRef = useRef<HTMLElement | null>(null);
 
     const scrollLeft = () => {
+        if (!sliderRef.current) return;
+
         sliderRef.current.scrollLeft -= 150;
     };
 
     const scrollRight = () => {
-        sliderRef.current.scrollRight += 150;
+        if (!sliderRef.current) return;
+        sliderRef.current.scrollLeft += 150;
     };
     return (
         <div onClick={scrollLeft} className={styles.slider}>

@@ -15,12 +15,29 @@ export interface INewsApiResponse {
     status: string;
 }
 
+export interface ICategoriesApiResponse {
+    categories: CategoriesType[];
+    description: string;
+    status: string;
+}
+
+export interface IPaginationProps {
+    totalPage: number;
+    nextPage: () => void;
+    previousPage: () => void;
+    currentPage: number;
+    handlePageClick: (page: number) => void;
+}
+
 export interface IFilters {
     page_number: number;
     page_size: number;
     category: CategoriesType | null;
     keywords: string;
 }
+
+export type SkeletonType = "banner" | "item";
+export type DirectionType = "row" | "column";
 
 export type ParamsType = Partial<IFilters>;
 
