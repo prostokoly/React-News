@@ -1,3 +1,4 @@
+import { useTheme } from "../../context/ThemeContext/ThemeContext";
 import styles from "./search.module.css";
 interface IProps {
     keywords: string;
@@ -5,8 +6,11 @@ interface IProps {
 }
 
 const Search = ({ keywords, setKeywords }: IProps) => {
+    const { isDark } = useTheme();
     return (
-        <div className={styles.search}>
+        <div
+            className={`${styles.search} ${isDark ? styles.dark : styles.light} `}
+        >
             <input
                 type="text"
                 className={styles.input}
