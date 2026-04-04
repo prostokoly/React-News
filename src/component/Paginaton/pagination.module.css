@@ -26,3 +26,15 @@
     align-items: center;
     justify-content: center;
 }
+
+.pagination.dark .pagesNumber,
+.pagination.dark .arrow {
+    background-color: #23272f;
+    color: #f6f7f9;
+}
+
+.pagination.light .pagesNumber,
+.pagination.light .arrow {
+    background-color: white;
+    color: black;
+}

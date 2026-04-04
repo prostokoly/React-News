@@ -3,9 +3,10 @@ import styles from "./slider.module.css";
 
 interface Props {
     children: React.ReactElement;
+    isDark: boolean;
 }
 
-const Slider = ({ children }: Props) => {
+const Slider = ({ children, isDark }: Props) => {
     const sliderRef = useRef<HTMLElement | null>(null);
 
     const scrollLeft = () => {
@@ -19,7 +20,10 @@ const Slider = ({ children }: Props) => {
         sliderRef.current.scrollLeft += 150;
     };
     return (
-        <div onClick={scrollLeft} className={styles.slider}>
+        <div
+            onClick={scrollLeft}
+            className={`${styles.slider} ${isDark ? styles.dark : styles.light} `}
+        >
             <button className={styles.arrow}>{`<`}</button>
             {React.cloneElement(children, { ref: sliderRef })}
             <button
