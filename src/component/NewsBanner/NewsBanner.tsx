@@ -1,8 +1,12 @@
 import Image from "../Image/Image";
 import styles from "./newsBanner.module.css";
 import { formatTimeAgo } from "../../helpers/formatTimeAgo";
+import type { INews } from "../../interfaces";
 
-const NewsBanner = ({ item }) => {
+interface IProps {
+    item: INews;
+}
+const NewsBanner = ({ item }: IProps) => {
     return (
         <div className={styles.banner}>
             <Image image={item?.image} />
