@@ -5,6 +5,14 @@
     gap: 12px;
 }
 
+.search.light {
+    background-color: #fff;
+}
+
+.search.dark {
+    background-color: #23272f;
+}
+
 .input {
     width: 100%;
     padding: 10px 10px;
