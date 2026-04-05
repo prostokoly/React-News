@@ -1,3 +1,6 @@
+//Папку можно удалить, функции не используются
+//запросы переписаны на RTK Query
+
 import axios from "axios";
 import type {
     ICategoriesApiResponse,

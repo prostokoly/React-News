@@ -1,3 +1,8 @@
+//Можно удалить useFetch не используется,
+// вместо него в ../store/services/newsApi
+//используются
+// useGetNewsQuery, useGetLatestNewsQuery, useGetCategoriesQuery
+
 import { useEffect, useState } from "react";
 
 interface FetchFunction<P, T> {
