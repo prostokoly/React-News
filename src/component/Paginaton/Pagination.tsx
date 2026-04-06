@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./pagination.module.css";
 import type { IPaginationProps } from "../../interfaces";
-import { useTheme } from "../../context/ThemeContext/ThemeContext";
+import { useTheme } from "../../app/providers/ThemeContext/ThemeProvidert";
 
 const Pagination = ({
     totalPage,

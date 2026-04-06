@@ -1,4 +1,4 @@
-import { useTheme } from "../../context/ThemeContext/ThemeContext";
+import { useTheme } from "../../app/providers/ThemeContext/ThemeProvidert";
 import styles from "./search.module.css";
 interface IProps {
     keywords: string;

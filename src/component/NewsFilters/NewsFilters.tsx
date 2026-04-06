@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useTheme } from "../../context/ThemeContext/ThemeContext";
+import { useTheme } from "../../app/providers/ThemeContext/ThemeProvidert";
 import type { IFilters } from "../../interfaces";
 import { useGetCategoriesQuery } from "../../store/services/newsApi";
 import Categories from "../Categories.jsx/Categories";
