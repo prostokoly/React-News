@@ -1,12 +1,14 @@
 import styles from "./newsItem.module.css";
 import { formatTimeAgo } from "../../helpers/formatTimeAgo";
 import type { INews } from "../../interfaces";
+import type { ReactNode } from "react";
 
 interface Props {
     item: INews;
+    viewNewsSlot?: (news: INews) => ReactNode;
 }
 
-const NewsItem = ({ item }: Props) => {
+const NewsItem = ({ item, viewNewsSlot }: Props) => {
     return (
         <li className={styles.item}>
             <div
@@ -19,6 +21,7 @@ const NewsItem = ({ item }: Props) => {
                     {formatTimeAgo(item.published)} by {item.author}
                 </p>
             </div>
+            {viewNewsSlot ? viewNewsSlot(item) : null}
         </li>
     );
 };
