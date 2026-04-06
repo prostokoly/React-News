@@ -9,3 +9,4 @@ React-News — приложение для просмотра новостей �
 -  `npm install @reduxjs/toolkit react-redux`
 - `npm install @types/react-redux` 
 - `npm run dev` — запуск в режиме разработки
+- `npm run build` — сборка для продакшена
