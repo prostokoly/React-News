@@ -3,7 +3,7 @@ import { formatDate } from "../../helpers/formatDate";
 // import "./header.modules.css";
 
 import styles from "./header.module.css";
-import { useTheme } from "../../context/ThemeContext/ThemeContext";
+import { useTheme } from "../../app/providers/ThemeContext/ThemeProvidert";
 
 const Header = () => {
     const { isDark, toggleTheme } = useTheme();
