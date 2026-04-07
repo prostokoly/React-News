@@ -1,10 +1,12 @@
-.news {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    gap: 32px;
+.details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
+.extra {
+    padding: 0 20px;
+    gap: 20pxs;
+}
 /* @media (max-width: 768px) {
     .main {
         grid-template-columns: 1fr;

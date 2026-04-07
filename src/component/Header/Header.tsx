@@ -4,6 +4,7 @@ import { formatDate } from "../../helpers/formatDate";
 
 import styles from "./header.module.css";
 import { useTheme } from "../../context/ThemeContext/ThemeContext";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     const { isDark, toggleTheme } = useTheme();
@@ -12,7 +13,9 @@ const Header = () => {
             className={`${styles.header} ${isDark ? styles.dark : styles.light} `}
         >
             <div className={styles.info}>
-                <h1 className={styles.title}>News </h1>
+                <Link to={"/"}>
+                    <h1 className={styles.title}>News </h1>
+                </Link>
                 <p className={styles.date}>{formatDate(new Date())}</p>
             </div>
             <div>
