@@ -1,5 +1,4 @@
 import Header from "./component/Header/Header";
-import Main from "./pages/Main/Main";
 
 import "./index.css";
 import { useTheme } from "./context/ThemeContext/ThemeContext";
@@ -12,7 +11,6 @@ function App() {
         <div className={`app ${isDark ? "dark" : "light"} `}>
             <Header />
             <div className="container">
-                {/* <Main /> */}
                 <Outlet />
             </div>
         </div>
