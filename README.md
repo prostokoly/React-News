@@ -1,4 +1,4 @@
-React-News — приложение для просмотра новостей на React 19 с использованием Vite и TypeScript. Для управления состоянием применяются Redux Toolkit и React Redux, запросы к API выполняются через Axios.
+React-News — приложение для просмотра новостей на React 19 с использованием Vite и TypeScript. Для управления состоянием применяются Redux Toolkit, запросы к API выполняются через Axios.
 
 Стек: React 19, Vite, TypeScript, Redux Toolkit, Axios.
 
